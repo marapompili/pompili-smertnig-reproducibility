@@ -13,13 +13,70 @@ The scripts verify:
 1. the performance-comparison table;
 2. two factorization examples.
 
-The computations use the `FLIR` and `BanffClusterAlgebra`
-implementations proposed in SageMath pull request #42538.
+The implementation relies on the SageMath development version containing
+the Banff cluster algebra and finite Laurent intersection ring (FLIR)
+implementation introduced in SageMath pull request #42538.
 
-## Reproducibility status
+---
 
-The code in this repository is intended to make every input matrix,
-mutation sequence, element, timeout and reported invariant explicit.
-Benchmark timings are machine-dependent; algebraic outputs should be
-independent of the machine and are checked against committed expected
-results.
+## Repository contents
+
+- `performance_comparison.py`
+  
+  Reproduces the performance comparison between the FLIR algorithm and the
+  presentation/primary decomposition approach.
+
+- `factorization_examples.py`
+  
+  Reproduces the factorization examples appearing in the paper.
+
+---
+
+## Requirements
+
+This repository **does not work with the current official SageMath release**.
+
+It requires a development version of SageMath containing the implementation
+introduced in SageMath pull request **#42538**.
+
+In particular, the scripts use
+
+```python
+from sage.algebras.banff_cluster_algebra import BanffClusterAlgebra
+```
+
+which is not yet available in an official SageMath release.
+
+---
+
+## Installation
+
+Clone SageMath and check out the branch containing pull request #42538:
+
+```bash
+git clone https://github.com/sagemath/sage.git
+cd sage
+git fetch origin pull/42538/head:pr-42538
+git checkout pr-42538
+```
+
+Build SageMath following the official developer installation instructions.
+
+---
+
+## Running the examples
+
+After building SageMath, execute
+
+```bash
+/path/to/sage performance_comparison.py
+```
+
+to reproduce the benchmark computations.
+
+To reproduce the factorization examples, execute
+
+```bash
+/path/to/sage factorization_examples.py
+```
+
