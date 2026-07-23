@@ -26,7 +26,7 @@ implementation introduced in SageMath pull request #42538.
   Reproduces the performance comparison between the FLIR algorithm and the
   presentation/primary decomposition approach.
 
-- `factorization_examples.py`
+- `example-factorizations.py`
   
   Reproduces the factorization examples appearing in the paper.
 
